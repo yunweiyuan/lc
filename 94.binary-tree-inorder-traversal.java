@@ -37,6 +37,9 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+// succeeded
+/*
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
@@ -65,6 +68,27 @@ class Solution {
 				stack.push(temp);
 			}
 		}
+	}
+	return inorder;
+    }
+}
+*/
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+	Stack<TreeNode> stack = new Stack<>();
+	List<Integer> inorder = new LinkedList<>();
+
+	TreeNode curNode = root;
+	while (curNode != null || !stack.isEmpty()) {
+	    while (curNode != null) {
+		stack.push(curNode);
+		curNode = curNode.left;
+	    }
+
+	    curNode = stack.pop();
+	    inorder.add(curNode.val);
+	    curNode = curNode.right;
 	}
 	return inorder;
     }
